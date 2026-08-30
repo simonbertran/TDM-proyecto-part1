@@ -1,0 +1,30 @@
+.header{
+    flex-direction: row;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    background-color: #eee;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    margin: 0 ;
+}
+
+.header h1{
+    width: 50%;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 50%;
+    align-items: center;
+    
+}
+
+.nav-tabs{
+    justify-content:center;
+
+}
+
+

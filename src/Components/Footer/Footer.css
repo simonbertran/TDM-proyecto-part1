@@ -1,0 +1,28 @@
+footer{
+    flex-direction: row;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+    background-color: #eee;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    margin: 0 ;
+}
+
+
+
+ footer p{
+    margin-right: 6px;
+    
+}
+
+.nav-tabs{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content:space-around;
+    width: 100%;
+}
+
+

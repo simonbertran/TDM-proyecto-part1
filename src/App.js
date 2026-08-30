@@ -1,13 +1,19 @@
-import { Routes, Route } from "react-router-dom";
-import Home from "./Home";
-import MovieDetail from "./MovieDetail";
+import React from "react";
+import Header from "./Components/Header/Header";
+import Footer from "./Components/Footer/Footer";
+import MovieSec from "./Components/MovieSection/MovieSection";
+
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/movie/:id" element={<MovieDetail />} />
-    </Routes>
+    <body>
+      <Header />
+      <main>
+        <MovieSec />
+      </main>
+      <Footer />
+
+    </body>
   );
 }
 

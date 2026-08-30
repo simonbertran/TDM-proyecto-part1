@@ -1,0 +1,30 @@
+.character-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 21%;
+    color: #0e0e0e;
+    background-color: white;
+    padding: 1%;
+    margin: 0.4%;
+    
+}
+
+.character-card h4{
+    font-size: 150%;  
+    margin-bottom: 4%;
+    margin-top: 1%;  
+}
+
+.character-card a{
+    color: blue; 
+}
+
+.character-card img{
+    width: 100%;
+}
+
+.active{
+    background-color: aquamarine;
+}

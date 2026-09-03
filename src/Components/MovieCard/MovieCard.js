@@ -1,5 +1,6 @@
 import "./MovieCard.css"
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 class MovieCard extends Component {
     constructor(props) {
@@ -34,6 +35,7 @@ class MovieCard extends Component {
             <article class={this.state.estaSelect ? "character-card active" : "character-card"} onDoubleClick={() => this.select()}>
                 <img src={posterUrl} alt={this.props.movie.title} />
                 <h4>{this.props.movie.title}</h4>
+                <Link className="more" to={`/detalle/${this.props.movie.id}`}>Ir al detalle</Link>
 
 
                 {this.state.estaOculto?

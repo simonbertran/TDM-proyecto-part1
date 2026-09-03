@@ -16,3 +16,28 @@ section{
     width: 100%;
     margin: 0px;
 }
+
+
+.ver-todas {
+    display: inline-block;
+    background-color: #0e0e0e;
+    color: white;
+    border-radius: 4px;
+    padding: 8px 14px;
+    margin: 10px 0;
+    font-size: 0.9rem;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.ver-todas:hover {
+    background-color: #444;
+}
+
+.titulo-seccion {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}

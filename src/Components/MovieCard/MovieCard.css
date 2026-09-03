@@ -17,14 +17,29 @@
     margin-top: 1%;  
 }
 
-.character-card a{
-    color: blue; 
-}
-
 .character-card img{
     width: 100%;
 }
 
 .active{
     background-color: aquamarine;
+}
+
+
+
+.more {
+    display: inline-block;
+    background-color: #0e0e0e;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 6px 10px;
+    margin: 6px 4px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.more:hover {
+    background-color: #444;
 }

@@ -1,19 +1,25 @@
 import React from "react";
 import Header from "./Components/Header/Header";
 import Footer from "./Components/Footer/Footer";
-import MovieSec from "./Components/MovieSection/MovieSection";
+import Home from "./Screens/Home/Home";
+import Detalle from "./Screens/Detalle/Detalle";
+import { Route } from "react-router-dom";
+import { Switch } from "react-router-dom";
+
 
 
 function App() {
   return (
-    <body>
+    <div>
       <Header />
       <main>
-        <MovieSec />
+        <Switch>
+          <Route path="/" exact={true} component={Home} />
+          <Route path="/detalle/:id" component={Detalle} />
+        </Switch>
       </main>
       <Footer />
-
-    </body>
+    </div>
   );
 }
 

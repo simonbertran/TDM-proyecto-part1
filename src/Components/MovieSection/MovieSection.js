@@ -1,6 +1,7 @@
 import "./MovieSection.css"
 import MovieCard from "../MovieCard/MovieCard"
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 
 class MovieSec extends Component {
@@ -31,7 +32,11 @@ class MovieSec extends Component {
                 {this.state.datosPopu === " " ?
                     <h3>Cargando...</h3> :
                     <section class='Section-data'>
-                        <h2>Películas populares</h2>
+                        <div className="titulo-seccion">
+                            <h2>Películas populares</h2>
+                            <Link className="ver-todas" to="/populares">Ver todas</Link> {/* van a funcionar cuando se agregue la página peliculas con la ruta parametrizada */}
+
+                        </div>
                         {this.state.datosPopu.map((movie) =>
                             <MovieCard key={movie.id} movie={movie} />)}
                     </section>
@@ -40,7 +45,10 @@ class MovieSec extends Component {
                 {this.state.datosPlay === " " ?
                     <h3>Cargando...</h3> :
                     <section class='Section-data'>
-                        <h2>Películas en cartelera</h2>
+                        <div className="titulo-seccion">
+                            <h2>Películas en cartelera</h2>
+                            <Link className="ver-todas" to="/cartelera">Ver todas</Link>
+                        </div>
                         {this.state.datosPlay.map((movie) =>
                             <MovieCard key={movie.id} movie={movie} />)}
                     </section>

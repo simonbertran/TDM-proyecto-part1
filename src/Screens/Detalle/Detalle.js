@@ -1,0 +1,42 @@
+import React, { Component } from "react";
+import "./Detalle.css";
+
+class Detalle extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            pelicula: " "
+        }
+    }
+
+    componentDidMount() {
+        const id = this.props.match.params.id
+        fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=a86dfc3e8792d8c35b2b0bcfae9f4488`)
+            .then(response => response.json())
+            .then(data => this.setState({ pelicula: data }))
+            .catch(error => console.log(error))
+    }
+
+    render() {
+        return (
+            <div>
+                {this.state.pelicula === " " ?
+                    <h3>Cargando...</h3> :
+                    <article className="detalle">
+                        <img src={`https://image.tmdb.org/t/p/w500${this.state.pelicula.poster_path}`} alt={this.state.pelicula.title} />
+                        <div className="detalle-info">
+                            <h2>{this.state.pelicula.title}</h2>
+                            <p>Calificación: {this.state.pelicula.vote_average}</p>
+                            <p>Fecha de estreno: {this.state.pelicula.release_date}</p>
+                            <p>Duración: {this.state.pelicula.runtime} minutos</p>
+                            <p>Sinopsis: {this.state.pelicula.overview}</p>
+                            <p>Género: {this.state.pelicula.genres.map((genero, idx) => <span key={idx}>{genero.name} </span>)}</p>
+                        </div>
+                    </article>
+                }
+            </div>
+        );
+    }
+}
+
+export default Detalle

@@ -1,9 +1,16 @@
 import "./Header.css";
 import Pestanas from "../Pestanas/Pestanas";
 
-let pestana=["HOME","Peliculas","Series","Favoritos","Registro","Log in"]
+let pestana = [
+    { tit: "HOME", ruta: "/" },
+    { tit: "Peliculas", ruta: "/peliculas" },
+    { tit: "Series", ruta: "/series" },
+    { tit: "Favoritos", ruta: "/favoritos" },
+    { tit: "Registro", ruta: "/registro" },
+    { tit: "Log in", ruta: "/login" }
+]
 
-function Header(props) {
+function Header() {
     return (
 
         <header class="header">
@@ -13,7 +20,7 @@ function Header(props) {
             <nav>
 
                 <ul class="nav nav-tabs my-4">
-                    {pestana.map((pest,idx)=><Pestanas tit={pest} key={idx}/>)}
+                    {pestana.map((pest,idx)=><Pestanas tit={pest.tit} ruta={pest.ruta} key={idx}/>)}
                 </ul>
 
             </nav>

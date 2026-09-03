@@ -3,6 +3,7 @@ import Header from "./Components/Header/Header";
 import Footer from "./Components/Footer/Footer";
 import Home from "./Screens/Home/Home";
 import Detalle from "./Screens/Detalle/Detalle";
+import Peliculas from "./Screens/Peliculas/Peliculas";
 import { Route } from "react-router-dom";
 import { Switch } from "react-router-dom";
 
@@ -16,6 +17,7 @@ function App() {
         <Switch>
           <Route path="/" exact={true} component={Home} />
           <Route path="/detalle/:id" component={Detalle} />
+          <Route path="/peliculas/:tipo" component={Peliculas} />
         </Switch>
       </main>
       <Footer />

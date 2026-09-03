@@ -30,7 +30,9 @@ class Detalle extends Component {
                             <p>Fecha de estreno: {this.state.pelicula.release_date}</p>
                             <p>Duración: {this.state.pelicula.runtime} minutos</p>
                             <p>Sinopsis: {this.state.pelicula.overview}</p>
-                            <p>Género: {this.state.pelicula.genres.map((genero, idx) => <span key={idx}>{genero.name} </span>)}</p>
+                            <div className="generos">
+                                <p>Género:</p> {this.state.pelicula.genres.map((genero, idx) => <p key={idx}>{genero.name} |</p> )}
+                            </div>
                         </div>
                     </article>
                 }

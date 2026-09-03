@@ -1,0 +1,15 @@
+.cargar-mas {
+    display: block;
+    margin: 20px auto;
+    background-color: #0e0e0e;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.cargar-mas:hover {
+    background-color: #444;
+}

@@ -3,7 +3,8 @@ import Pestanas from "../Pestanas/Pestanas";
 
 let pestana = [
     { tit: "HOME", ruta: "/" },
-    { tit: "Peliculas", ruta: "/peliculas" },
+    { tit: "Populares", ruta: "/peliculas/popular" },
+    { tit: "Cartelera", ruta: "/peliculas/now-playing" },
     { tit: "Series", ruta: "/series" },
     { tit: "Favoritos", ruta: "/favoritos" },
     { tit: "Registro", ruta: "/registro" },

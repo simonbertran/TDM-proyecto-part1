@@ -4,11 +4,11 @@ import Footer from "./Components/Footer/Footer";
 import Home from "./Screens/Home/Home";
 import Detalle from "./Screens/Detalle/Detalle";
 import Peliculas from "./Screens/Peliculas/Peliculas";
+import Login from "./Screens/Login/Login";
+import Register from "./Screens/Register/Register";
 import { Route } from "react-router-dom";
 import { Switch } from "react-router-dom";
-
-
-
+ 
 function App() {
   return (
     <div>
@@ -18,11 +18,13 @@ function App() {
           <Route path="/" exact={true} component={Home} />
           <Route path="/detalle/:id" component={Detalle} />
           <Route path="/peliculas/:tipo" component={Peliculas} />
+          <Route path="/login" component={Login} />
+          <Route path="/registro" component={Register} />
         </Switch>
       </main>
       <Footer />
     </div>
   );
 }
-
+ 
 export default App;

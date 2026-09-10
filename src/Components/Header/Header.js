@@ -1,5 +1,9 @@
+import React, { Component } from "react";
+import Cookies from "universal-cookie";
 import "./Header.css";
 import Pestanas from "../Pestanas/Pestanas";
+
+const cookies = new Cookies();
 
 let pestana = [
     { tit: "HOME", ruta: "/" },
@@ -9,25 +13,49 @@ let pestana = [
     { tit: "Favoritos", ruta: "/favoritos" },
     { tit: "Registro", ruta: "/registro" },
     { tit: "Log in", ruta: "/login" }
-]
+];
 
-function Header() {
-    return (
+class Header extends Component {
 
-        <header class="header">
+    render() {
 
-            <h1>UdeSA Movies</h1>
+        let haySesion = cookies.get("user-auth-cookie");
 
-            <nav>
+        let pestanasVisibles = pestana.filter((item) => {
 
-                <ul class="nav nav-tabs my-4">
-                    {pestana.map((pest,idx)=><Pestanas tit={pest.tit} ruta={pest.ruta} key={idx}/>)}
-                </ul>
+            if (item.tit === "Favoritos") {
+                return haySesion;
+            }
 
-            </nav>
-        </header>
-        
-    )
+            if (item.tit === "Registro" || item.tit === "Log in") {
+                return !haySesion;
+            }
+
+            return true;
+        });
+
+        return (
+            <header className="header">
+
+                <h1>UdeSA Movies</h1>
+
+                <nav>
+                    <ul className="nav nav-tabs my-4">
+
+                        {pestanasVisibles.map((pest, idx) =>
+                            <Pestanas
+                                tit={pest.tit}
+                                ruta={pest.ruta}
+                                key={pest.tit + idx}
+                            />
+                        )}
+
+                    </ul>
+                </nav>
+
+            </header>
+        );
+    }
 }
-export default Header;
 
+export default Header;

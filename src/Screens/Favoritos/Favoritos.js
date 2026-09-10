@@ -26,6 +26,7 @@ class Favoritos extends Component {
             peliculas: peliculasFavoritas,
             series: seriesFavoritas
         });
+        console.log(localStorage.getItem("peliculasFavoritas"));
     }
 
     eliminarPelicula(id) {
@@ -82,7 +83,7 @@ class Favoritos extends Component {
 
                                 <h3>{pelicula.title}</h3>
 
-                                <Link to={`/pelicula/${pelicula.id}`}>
+                                <Link to={`/detalle/${pelicula.id}`}>
                                     Ver detalle
                                 </Link>
 

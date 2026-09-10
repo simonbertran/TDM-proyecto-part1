@@ -1,84 +1,107 @@
-import React, { Component } from 'react';
-import Cookies from 'universal-cookie';
+import React, { Component } from "react";
+import Cookies from "universal-cookie";
+import "./Login.css";
 
 const cookies = new Cookies();
 
 class Login extends Component {
-  constructor(props) {
-    super(props);
+    constructor(props) {
+        super(props);
 
-    this.state = {
-      email: '',
-      password: '',
-      error: ''
-    };
-  }
-
-  handleChange(event) {
-    this.setState({
-      [event.target.name]: event.target.value
-    });
-  }
-
-  handleSubmit(event) {
-    event.preventDefault();
-
-    let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
-
-    let usuario = usuarios.find(
-      usuario => usuario.email === this.state.email
-    );
-
-    if (!usuario || usuario.password !== this.state.password) {
-      this.setState({
-        error: 'Credenciales incorrectas'
-      });
-
-      return;
+        this.state = {
+            email: "",
+            password: "",
+            error: ""
+        };
     }
 
-    cookies.set('user-auth-cookie', usuario.email);
+    handleChange(event) {
+        this.setState({
+            [event.target.name]: event.target.value
+        });
+    }
 
-    this.props.history.push('/');
-  }
+    handleSubmit(event) {
+        event.preventDefault();
 
-  render() {
-    return (
-      <div className="login">
-        <h1>Login</h1>
+        let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
 
-        <form onSubmit={(event) => this.handleSubmit(event)}>
+        let usuario = usuarios.find(
+            usuario => usuario.email === this.state.email
+        );
 
-          <label>Email</label>
-          <input
-            type="email"
-            name="email"
-            value={this.state.email}
-            onChange={(event) => this.handleChange(event)}
-          />
+        if (!usuario || usuario.password !== this.state.password) {
+            this.setState({
+                error: "Credenciales incorrectas."
+            });
+            return;
+        }
 
-          <label>Password</label>
-          <input
-            type="password"
-            name="password"
-            value={this.state.password}
-            onChange={(event) => this.handleChange(event)}
-          />
+        cookies.set("user-auth-cookie", usuario.email);
 
-          {this.state.error !== '' ?
-            <p className="error">{this.state.error}</p>
-            :
-            null
-          }
+        this.props.history.push("/");
+    }
 
-          <button type="submit">
-            Ingresar
-          </button>
+    render() {
+        return (
+            <main className="login">
+                <div className="login-card">
 
-        </form>
-      </div>
-    );
-  }
+                    <h1>Iniciar sesión</h1>
+
+                    <p className="login-subtitle">
+                        Ingresá a tu cuenta para ver tus favoritos.
+                    </p>
+
+                    <form onSubmit={(event) => this.handleSubmit(event)}>
+
+                        <div className="login-field">
+                            <label>Email</label>
+
+                            <input
+                                type="email"
+                                name="email"
+                                placeholder="Ingresá tu email"
+                                value={this.state.email}
+                                onChange={(event) => this.handleChange(event)}
+                                required
+                            />
+                        </div>
+
+                        <div className="login-field">
+                            <label>Contraseña</label>
+
+                            <input
+                                type="password"
+                                name="password"
+                                placeholder="Ingresá tu contraseña"
+                                value={this.state.password}
+                                onChange={(event) => this.handleChange(event)}
+                                required
+                            />
+                        </div>
+
+                        {this.state.error !== "" ?
+                            <p className="login-error">
+                                {this.state.error}
+                            </p>
+                            :
+                            null
+                        }
+
+                        <button
+                            className="login-button"
+                            type="submit"
+                        >
+                            Ingresar
+                        </button>
+
+                    </form>
+
+                </div>
+            </main>
+        );
+    }
 }
 
 export default Login;

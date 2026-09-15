@@ -1,33 +1,13 @@
-import "./MovieCard.css";
+import "./MovieCard.css"
 import React, { Component } from "react";
-import { Link, withRouter } from "react-router-dom";
-import Cookies from "universal-cookie";
-
-const cookies = new Cookies();
+import { Link } from "react-router-dom";
 
 class MovieCard extends Component {
     constructor(props) {
         super(props);
-
         this.state = {
             estaOculto: true,
-            estaSelect: false,
-            esFavorita: false
-        };
-    }
-
-    componentDidMount() {
-        let peliculasFavoritas =
-            JSON.parse(localStorage.getItem("peliculasFavoritas")) || [];
-
-        let peliculaEncontrada = peliculasFavoritas.find(
-            pelicula => pelicula.id === this.props.movie.id
-        );
-
-        if (peliculaEncontrada) {
-            this.setState({
-                esFavorita: true
-            });
+            estaSelect: false
         }
     }
 
@@ -36,7 +16,6 @@ class MovieCard extends Component {
             estaOculto: false
         });
     }
-
     verMenos() {
         this.setState({
             estaOculto: true
@@ -46,121 +25,35 @@ class MovieCard extends Component {
     select() {
         this.setState({
             estaSelect: !this.state.estaSelect
-        });
-    }
-
-    favorito() {
-        let haySesion = cookies.get("user-auth-cookie");
-
-        // Si no está logueado lo manda al login
-        if (!haySesion) {
-            this.props.history.push("/login");
-            return;
-        }
-
-        let peliculasFavoritas =
-            JSON.parse(localStorage.getItem("peliculasFavoritas")) || [];
-
-        // Si ya está en favoritos, la elimina
-        if (this.state.esFavorita) {
-
-            let peliculasActualizadas = peliculasFavoritas.filter(
-                pelicula => pelicula.id !== this.props.movie.id
-            );
-
-            localStorage.setItem(
-                "peliculasFavoritas",
-                JSON.stringify(peliculasActualizadas)
-            );
-
-            this.setState({
-                esFavorita: false
-            });
-
-        } else {
-
-            // Si no está en favoritos, la agrega
-            peliculasFavoritas.push(this.props.movie);
-
-            localStorage.setItem(
-                "peliculasFavoritas",
-                JSON.stringify(peliculasFavoritas)
-            );
-
-            this.setState({
-                esFavorita: true
-            });
-        }
+        })
     }
 
     render() {
-
-        const posterUrl =
-            `https://image.tmdb.org/t/p/w500${this.props.movie.poster_path}`;
-
+        const posterUrl = `https://image.tmdb.org/t/p/w500${this.props.movie.poster_path}`;
         return (
 
-            <article
-                className={
-                    this.state.estaSelect
-                        ? "character-card active"
-                        : "character-card"
-                }
-            >
-
-                <button
-                    className="favorite-button"
-                    onClick={() => this.favorito()}
-                    type="button"
-                >
-                    {this.state.esFavorita ? "♥" : "♡"}
-                </button>
-
-                <img
-                    src={posterUrl}
-                    alt={this.props.movie.title}
-                />
-
+            <article class={this.state.estaSelect ? "character-card active" : "character-card"} onDoubleClick={() => this.select()}>
+                <img src={posterUrl} alt={this.props.movie.title} />
                 <h4>{this.props.movie.title}</h4>
+                <Link className="more" to={`/detalle/${this.props.movie.id}`}>Ir al detalle</Link>
 
-                <Link
-                    className="more"
-                    to={`/detalle/${this.props.movie.id}`}
-                >
-                    Ir al detalle
-                </Link>
 
-                {this.state.estaOculto ?
+                {this.state.estaOculto?
                     <>
-                        <button
-                            className="more"
-                            onClick={() => this.verMas()}
-                        >
-                            Ver Descripcion
-                        </button>
+                        <button class='more' onClick={() => this.verMas()}> Ver Descripcion</button>
                     </>
                     :
                     <>
-                        <p>
-                            Fecha de estreno: {this.props.movie.release_date}
-                        </p>
+                        <p>Fecha de estreno: {this.props.movie.release_date}</p>
+                        <p>Sinopsis: {this.props.movie.overview}</p>                        
+                        <button class='more' onClick={() => this.verMenos()}> Ocultar Descripcion</button>
+                        
 
-                        <p>
-                            Sinopsis: {this.props.movie.overview}
-                        </p>
-
-                        <button
-                            className="more"
-                            onClick={() => this.verMenos()}
-                        >
-                            Ocultar Descripcion
-                        </button>
                     </>
                 }
-
             </article>
         );
-    }
+    };
 }
+export default MovieCard
 
-export default withRouter(MovieCard);

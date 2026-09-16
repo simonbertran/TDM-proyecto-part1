@@ -8,7 +8,7 @@ const cookies = new Cookies();
 let pestana = [
     { tit: "HOME", ruta: "/" },
     { tit: "Populares", ruta: "/peliculas/popular" },
-    { tit: "Cartelera", ruta: "/peliculas/now-playing" },
+    { tit: "Cartelera", ruta: "/peliculas/now_playing" },
     { tit: "Series", ruta: "/series" },
     { tit: "Favoritos", ruta: "/favoritos" },
     { tit: "Registro", ruta: "/registro" },

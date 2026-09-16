@@ -1,6 +1,8 @@
 import "./MovieCard.css"
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import BotonFav from "../BotonFav/BotonFav";
+
 
 class MovieCard extends Component {
     constructor(props) {
@@ -31,22 +33,22 @@ class MovieCard extends Component {
     render() {
         const posterUrl = `https://image.tmdb.org/t/p/w500${this.props.movie.poster_path}`;
         return (
-
-            <article class={this.state.estaSelect ? "character-card active" : "character-card"} onDoubleClick={() => this.select()}>
+            <article className={this.state.estaSelect ? "character-card active" : "character-card"} onDoubleClick={() => this.select()}>
                 <img src={posterUrl} alt={this.props.movie.title} />
                 <h4>{this.props.movie.title}</h4>
                 <Link className="more" to={`/detalle/${this.props.movie.id}`}>Ir al detalle</Link>
 
+                <BotonFav id={this.props.movie.id} />
 
                 {this.state.estaOculto?
                     <>
-                        <button class='more' onClick={() => this.verMas()}> Ver Descripcion</button>
+                        <button className='more' onClick={() => this.verMas()}> Ver Descripcion</button>
                     </>
                     :
                     <>
                         <p>Fecha de estreno: {this.props.movie.release_date}</p>
                         <p>Sinopsis: {this.props.movie.overview}</p>                        
-                        <button class='more' onClick={() => this.verMenos()}> Ocultar Descripcion</button>
+                        <button className='more' onClick={() => this.verMenos()}> Ocultar Descripcion</button>
                         
 
                     </>

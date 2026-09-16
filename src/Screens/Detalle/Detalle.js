@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./Detalle.css";
+import BotonFav from "../../Components/BotonFav/BotonFav";
 
 class Detalle extends Component {
     constructor(props) {
@@ -13,7 +14,7 @@ class Detalle extends Component {
         const id = this.props.match.params.id
         fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=a86dfc3e8792d8c35b2b0bcfae9f4488`)
             .then(response => response.json())
-            .then(data => this.setState({ pelicula: data }))
+            .then(data => this.setState({ pelicula: data}))
             .catch(error => console.log(error))
     }
 
@@ -33,6 +34,7 @@ class Detalle extends Component {
                             <div className="generos">
                                 <p>Género:</p> {this.state.pelicula.genres.map((genero, idx) => <p key={idx}>{genero.name} |</p> )}
                             </div>
+                            <BotonFav id={this.state.pelicula.id} />
                         </div>
                     </article>
                 }

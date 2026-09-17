@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./Register.css";
+
 
 class Register extends Component {
     constructor(props) {
@@ -12,31 +12,43 @@ class Register extends Component {
         };
     }
 
-    handleChange(event) {
+    controlarEmail(event) {
         this.setState({
-            [event.target.name]: event.target.value
+            email: event.target.value
         });
     }
 
-    handleSubmit(event) {
+    controlarPassword(event) {
+        this.setState({
+            password: event.target.value
+        });
+    }
+
+    evitarSubmit(event) {
         event.preventDefault();
 
-        let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+        let usuarios = [];
+        let recuperoStorage = localStorage.getItem('usuarios');
 
-        let emailEnUso = usuarios.filter(
-            usuario => usuario.email === this.state.email
-        );
+        if (recuperoStorage !== null) {
+            usuarios = JSON.parse(recuperoStorage);
+        }
 
-        if (emailEnUso.length > 0) {
+//Verificamos que el mail no este en uso
+        let usuarioExiste = usuarios.filter(usuario => usuario.email === this.state.email);
+
+        if (usuarioExiste.length > 0) {
             this.setState({
-                error: "El email ya está en uso."
+                error: 'El email ya se encuentra registrado.'
+
             });
             return;
         }
 
+// verificamos que la contra sea mayor a 6 digitos
         if (this.state.password.length < 6) {
             this.setState({
-                error: "La contraseña debe tener un mínimo de 6 caracteres."
+                error: 'La contraseña debe tener al menos 6 caracteres.'
             });
             return;
         }
@@ -45,31 +57,29 @@ class Register extends Component {
             email: this.state.email,
             password: this.state.password
         };
-
         usuarios.push(nuevoUsuario);
 
-        localStorage.setItem(
-            "usuarios",
-            JSON.stringify(usuarios)
-        );
+        let usuariosToString = JSON.stringify(usuarios);
+        localStorage.setItem('usuarios', usuariosToString);
 
-        this.props.history.push("/login");
+//Una vez terminado lo manda al login
+        this.props.history.push('/login');
     }
 
     render() {
         return (
-            <main className="register">
-                <div className="register-card">
+            <main className="login">
+                <div className="login-card">
 
-                    <h1>Crear cuenta</h1>
+                    <h1>Registrarme</h1>
 
-                    <p className="register-subtitle">
-                        Registrate para guardar tus películas y series favoritas.
+                    <p className="login-subtitle">
+                        Crea tu cuenta.
                     </p>
 
-                    <form onSubmit={(event) => this.handleSubmit(event)}>
+                    <form onSubmit={(event) => this.evitarSubmit(event)}>
 
-                        <div className="register-field">
+                        <div className="login-field">
                             <label>Email</label>
 
                             <input
@@ -77,12 +87,12 @@ class Register extends Component {
                                 name="email"
                                 placeholder="Ingresá tu email"
                                 value={this.state.email}
-                                onChange={(event) => this.handleChange(event)}
+                                onChange={(event) => this.controlarEmail(event)}
                                 required
                             />
                         </div>
 
-                        <div className="register-field">
+                        <div className="login-field">
                             <label>Contraseña</label>
 
                             <input
@@ -90,13 +100,13 @@ class Register extends Component {
                                 name="password"
                                 placeholder="Ingresá tu contraseña"
                                 value={this.state.password}
-                                onChange={(event) => this.handleChange(event)}
+                                onChange={(event) => this.controlarPassword(event)}
                                 required
                             />
                         </div>
 
                         {this.state.error !== "" ?
-                            <p className="register-error">
+                            <p className="login-error">
                                 {this.state.error}
                             </p>
                             :
@@ -104,10 +114,10 @@ class Register extends Component {
                         }
 
                         <button
-                            className="register-button"
+                            className="login-button"
                             type="submit"
                         >
-                            Crear cuenta
+                            Ingresar
                         </button>
 
                     </form>

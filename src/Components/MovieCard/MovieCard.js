@@ -80,7 +80,7 @@ class MovieCard extends Component {
         } else {
 
             // Si no está en favoritos, la agrega
-            peliculasFavoritas.push(this.props.movie);
+            peliculasFavoritas.push(this.props.Peli);
 
             localStorage.setItem(
                 "peliculasFavoritas",
@@ -96,7 +96,7 @@ class MovieCard extends Component {
     render() {
 
         const posterUrl =
-            `https://image.tmdb.org/t/p/w500${this.props.movie.poster_path}`;
+            `https://image.tmdb.org/t/p/w500${this.props.Peli.poster_path}`;
 
         return (
 
@@ -118,15 +118,12 @@ class MovieCard extends Component {
 
                 <img
                     src={posterUrl}
-                    alt={this.props.movie.title}
+                    alt={this.props.Peli.title}
                 />
 
-                <h4>{this.props.movie.title}</h4>
+                <h4>{this.props.Peli.title}</h4>
 
-                <Link
-                    className="more"
-                    to={`/detalle/${this.props.movie.id}`}
-                >
+                <Link className="more" to={`/detalle/${this.props.Peli.id}`}>
                     Ir al detalle
                 </Link>
 
@@ -142,11 +139,11 @@ class MovieCard extends Component {
                     :
                     <>
                         <p>
-                            Fecha de estreno: {this.props.movie.release_date}
+                            Fecha de estreno: {this.props.Peli.release_date}
                         </p>
 
                         <p>
-                            Sinopsis: {this.props.movie.overview}
+                            Sinopsis: {this.props.Peli.overview}
                         </p>
 
                         <button

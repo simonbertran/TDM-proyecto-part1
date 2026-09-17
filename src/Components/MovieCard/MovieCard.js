@@ -1,33 +1,15 @@
-import "./MovieCard.css";
+import "./MovieCard.css"
 import React, { Component } from "react";
-import { Link, withRouter } from "react-router-dom";
-import Cookies from "universal-cookie";
+import { Link } from "react-router-dom";
+import BotonFav from "../BotonFav/BotonFav";
 
-const cookies = new Cookies();
 
 class MovieCard extends Component {
     constructor(props) {
         super(props);
-
         this.state = {
             estaOculto: true,
-            estaSelect: false,
-            esFavorita: false
-        };
-    }
-
-    componentDidMount() {
-        let peliculasFavoritas =
-            JSON.parse(localStorage.getItem("peliculasFavoritas")) || [];
-
-        let peliculaEncontrada = peliculasFavoritas.find(
-            pelicula => pelicula.id === this.props.movie.id
-        );
-
-        if (peliculaEncontrada) {
-            this.setState({
-                esFavorita: true
-            });
+            estaSelect: false
         }
     }
 
@@ -36,7 +18,6 @@ class MovieCard extends Component {
             estaOculto: false
         });
     }
-
     verMenos() {
         this.setState({
             estaOculto: true
@@ -127,37 +108,22 @@ class MovieCard extends Component {
                     Ir al detalle
                 </Link>
 
-                {this.state.estaOculto ?
+                {this.state.estaOculto?
                     <>
-                        <button
-                            className="more"
-                            onClick={() => this.verMas()}
-                        >
-                            Ver Descripcion
-                        </button>
+                        <button className='more' onClick={() => this.verMas()}> Ver Descripcion</button>
                     </>
                     :
                     <>
-                        <p>
-                            Fecha de estreno: {this.props.Peli.release_date}
-                        </p>
+                        <p>Fecha de estreno: {this.props.movie.release_date}</p>
+                        <p>Sinopsis: {this.props.movie.overview}</p>                        
+                        <button className='more' onClick={() => this.verMenos()}> Ocultar Descripcion</button>
+                        
 
-                        <p>
-                            Sinopsis: {this.props.Peli.overview}
-                        </p>
-
-                        <button
-                            className="more"
-                            onClick={() => this.verMenos()}
-                        >
-                            Ocultar Descripcion
-                        </button>
                     </>
                 }
-
             </article>
         );
-    }
+    };
 }
+export default MovieCard
 
-export default withRouter(MovieCard);

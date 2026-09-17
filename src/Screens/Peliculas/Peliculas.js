@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import MovieCard from "../../Components/MovieCard/MovieCard";
 import Filtro from "../../Components/Filtro/Filtro";
+import Header from '../../Components/Header/Header';
 import "./Peliculas.css";
 
 class Peliculas extends Component {
@@ -63,6 +64,7 @@ class Peliculas extends Component {
     render() {
         return (
             <div>
+                 <Header />
                 <Filtro filtrar={(texto) => this.filtrarPeliculas(texto)} />
 
                 {this.state.datos === " " ?

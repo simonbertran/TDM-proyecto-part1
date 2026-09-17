@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./Detalle.css";
 import BotonFav from "../../Components/BotonFav/BotonFav";
+import Header from '../../Components/Header/Header';
 
 class Detalle extends Component {
     constructor(props) {
@@ -21,8 +22,10 @@ class Detalle extends Component {
     render() {
         return (
             <div>
+                 <Header />
                 {this.state.pelicula === " " ?
                     <h3>Cargando...</h3> :
+                    
                     <article className="detalle">
                         <img src={`https://image.tmdb.org/t/p/w500${this.state.pelicula.poster_path}`} alt={this.state.pelicula.title} />
                         <div className="detalle-info">

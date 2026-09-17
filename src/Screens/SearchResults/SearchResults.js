@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import "./SearchResults.css"
 import MovieCard from '../../Components/MovieCard/MovieCard';
+import Header from '../../Components/Header/Header';
 
 class SearchResults extends Component {
   constructor(props) {
@@ -23,6 +24,7 @@ class SearchResults extends Component {
 render() {
     return (
       <div>
+         <Header />
         <h2>Resultados de búsqueda</h2>
         {this.state.cargando ? 
         (<h3>Cargando resultados...</h3>) : 

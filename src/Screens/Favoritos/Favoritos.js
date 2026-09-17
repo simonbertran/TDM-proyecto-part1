@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Cookies from "universal-cookie";
+import Header from '../../Components/Header/Header';
 
 const cookies = new Cookies();
 
@@ -50,6 +51,7 @@ class Favoritos extends Component {
     render() {
         return (
             <div>
+                 <Header />
                 <h2>Películas favoritas</h2>
                 {this.state.peliculas === '' ?
                     <h3>Cargando...</h3> :

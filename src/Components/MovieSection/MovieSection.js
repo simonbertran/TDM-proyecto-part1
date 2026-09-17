@@ -36,7 +36,7 @@ class MovieSec extends Component {
                             <h2>Películas populares</h2>
 
                         </div>
-                        {this.state.datosPopu.map((Peli) =>
+                        {this.state.datosPopu.filter((Peli,idx)=>idx<4).map((Peli) =>
                             <MovieCard key={Peli.id} Peli={Peli} />)}
                     </section>
                 }
@@ -47,7 +47,7 @@ class MovieSec extends Component {
                         <div className="titulo-seccion">
                             <h2>Películas en cartelera</h2>
                         </div>
-                        {this.state.datosPlay.map((Peli) =>
+                        {this.state.datosPlay.filter((Peli,idx)=>idx<4).map((Peli) =>
                             <MovieCard key={Peli.id} Peli={Peli} />)}
                     </section>
                 }

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Cookies from "universal-cookie";
 import "./Header.css";
 import Pestanas from "../Pestanas/Pestanas";
+import LogOut from "../LogOut/LogOut";
 
 const cookies = new Cookies();
 
@@ -12,7 +13,9 @@ let pestana = [
     { tit: "Series", ruta: "/series" },
     { tit: "Favoritos", ruta: "/favoritos" },
     { tit: "Registro", ruta: "/registro" },
-    { tit: "Log in", ruta: "/login" }
+    { tit: "Log in", ruta: "/login" },
+
+
 ];
 
 class Header extends Component {
@@ -49,6 +52,10 @@ class Header extends Component {
                                 key={pest.tit + idx}
                             />
                         )}
+
+                        {haySesion ? <LogOut />
+                            :
+                            null}
 
                     </ul>
                 </nav>

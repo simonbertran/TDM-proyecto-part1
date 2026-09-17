@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Cookies from "universal-cookie";
+import Header from '../../Components/Header/Header';
 import "./Login.css";
 
 const cookies = new Cookies();
@@ -44,6 +45,9 @@ class Login extends Component {
 
     render() {
         return (
+
+            <>
+            <Header />
             <main className="login">
                 <div className="login-card">
 
@@ -100,6 +104,7 @@ class Login extends Component {
 
                 </div>
             </main>
+            </>
         );
     }
 }

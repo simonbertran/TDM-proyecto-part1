@@ -2,6 +2,9 @@ import "./MovieCard.css"
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import BotonFav from "../BotonFav/BotonFav";
+import Cookies from "universal-cookie";
+
+const cookies = new Cookies()
 
 
 class MovieCard extends Component {
@@ -46,7 +49,7 @@ class MovieCard extends Component {
         if (this.state.esFavorita) {
 
             let peliculasActualizadas = peliculasFavoritas.filter(
-                pelicula => pelicula.id !== this.props.movie.id
+                pelicula => pelicula.id !== this.props.Peli.id
             );
 
             localStorage.setItem(
@@ -114,8 +117,8 @@ class MovieCard extends Component {
                     </>
                     :
                     <>
-                        <p>Fecha de estreno: {this.props.movie.release_date}</p>
-                        <p>Sinopsis: {this.props.movie.overview}</p>                        
+                        <p>Fecha de estreno: {this.props.Peli.release_date}</p>
+                        <p>Sinopsis: {this.props.Peli.overview}</p>                        
                         <button className='more' onClick={() => this.verMenos()}> Ocultar Descripcion</button>
                         
 

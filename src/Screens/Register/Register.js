@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Header from '../../Components/Header/Header';
 
 
 class Register extends Component {
@@ -68,6 +69,8 @@ class Register extends Component {
 
     render() {
         return (
+            <>
+             <Header />
             <main className="login">
                 <div className="login-card">
 
@@ -124,6 +127,7 @@ class Register extends Component {
 
                 </div>
             </main>
+            </>
         );
     }
 }

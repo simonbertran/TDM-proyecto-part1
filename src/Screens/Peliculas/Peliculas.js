@@ -71,7 +71,7 @@ class Peliculas extends Component {
                     <h3>Cargando...</h3> :
                     <section className="Section-data">
                         {this.state.datos.map((movie) =>
-                            <MovieCard key={movie.id} movie={movie} />)}
+                            <MovieCard key={movie.id} Peli={movie} />)}
                     </section>
                 }
                 <button className="cargar-mas" onClick={() => this.cargarMas()}>Cargar más</button>

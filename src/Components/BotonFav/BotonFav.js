@@ -53,9 +53,9 @@ class BotonFav extends Component {
             <React.Fragment>
                 {haySesion != null ?
                     (this.state.fav == false ?
-                        <button className='more' onClick={() => this.agregarFav()}>Agregar a favoritos</button>
+                        <button className='more' onClick={() => this.agregarFav()}>♡</button>
                         :
-                        <button className='more' onClick={() => this.sacarFav()}>Quitar de favoritos</button>
+                        <button className='more' onClick={() => this.sacarFav()}>♥</button>
                     )
                     :
                     ''

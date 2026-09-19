@@ -1,0 +1,59 @@
+/* ===========================================================
+   Boton.css
+   Botón de favoritos (♡ / ♥).
+   Usa la clase ".more" definida en MovieCard.css; acá van sus
+   estados propios y su versión circular en el Detalle.
+   =========================================================== */
+
+button.more {
+    line-height: 1.3;
+    letter-spacing: 0.02em;
+}
+
+button.more:active {
+    transform: scale(0.97);
+}
+
+button.more:focus-visible {
+    outline: 2px solid #e50914;
+    outline-offset: 2px;
+}
+
+/* Corazón dentro del detalle de la película */
+.detalle-info .more {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 54px;
+    height: 54px;
+    margin: 22px 0 0 0;
+    padding: 0;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.detalle-info .more:hover {
+    background-color: #e50914;
+    border-color: #e50914;
+    transform: scale(1.08);
+    box-shadow: 0 8px 22px rgba(229, 9, 20, 0.45);
+}
+
+.detalle-info .more:active {
+    transform: scale(0.96);
+}
+
+@media (max-width: 600px) {
+    .detalle-info .more {
+        width: 48px;
+        height: 48px;
+        margin-top: 18px;
+        font-size: 1.3rem;
+    }
+}

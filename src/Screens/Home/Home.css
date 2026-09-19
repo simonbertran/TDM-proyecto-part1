@@ -1,0 +1,25 @@
+/* ===========================================================
+   Home.css
+   Pantalla principal: contenedor de las secciones de películas
+   (el <div> que renderiza MovieSection dentro de la Home).
+   =========================================================== */
+
+main > div > div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding-bottom: 10px;
+    background-image: radial-gradient(1100px 320px at 50% -80px, rgba(229, 9, 20, 0.28), rgba(20, 20, 20, 0) 70%);
+}
+
+@media (max-width: 900px) {
+    main > div > div {
+        background-image: radial-gradient(700px 240px at 50% -60px, rgba(229, 9, 20, 0.24), rgba(20, 20, 20, 0) 70%);
+    }
+}
+
+@media (max-width: 600px) {
+    main > div > div {
+        background-image: radial-gradient(460px 180px at 50% -40px, rgba(229, 9, 20, 0.22), rgba(20, 20, 20, 0) 70%);
+    }
+}

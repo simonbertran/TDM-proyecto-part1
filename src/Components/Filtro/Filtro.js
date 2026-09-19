@@ -1,3 +1,4 @@
+import "./Filtro.css";
 import React, { Component } from "react";
 
 class Filtro extends Component {

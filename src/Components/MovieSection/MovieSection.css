@@ -1,43 +1,108 @@
+/* ===========================================================
+   MovieSection.css
+   Grilla de películas (.Section-data) y el encabezado de cada
+   sección con su link "Ver todas".
+   =========================================================== */
+
 .Section-data {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    gap: 20px;
+    width: 100%;
+    margin: 0 0 46px 0;
+    padding: 0 clamp(16px, 4vw, 48px);
+    background-color: transparent;
+}
+
+/* Encabezado de la sección: ocupa toda la fila de la grilla */
+.titulo-seccion {
+    grid-column: 1 / -1;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    align-items: center;
     justify-content: space-between;
+    gap: 10px 16px;
     width: 100%;
-    background-color: rgb(226, 221, 213);
-    margin-top: 1%;   
+    margin: 0;
+    padding: 0;
 }
 
-section{
-    width: 100;
+.titulo-seccion h2 {
+    width: auto;
+    margin: 0;
+    padding-left: 12px;
+    border-left: 4px solid #e50914;
+    color: #ffffff;
+    font-size: clamp(1.1rem, 0.9rem + 0.8vw, 1.6rem);
+    font-weight: 800;
+    letter-spacing: -0.01em;
 }
-
-.Section-data h2{
-    width: 100%;
-    margin: 0px;
-}
-
 
 .ver-todas {
     display: inline-block;
-    background-color: #0e0e0e;
-    color: white;
+    padding: 9px 18px;
+    border: 1px solid rgba(255, 255, 255, 0.28);
     border-radius: 4px;
-    padding: 8px 14px;
-    margin: 10px 0;
-    font-size: 0.9rem;
+    background-color: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+    font-size: 0.85rem;
+    font-weight: 600;
     text-decoration: none;
     white-space: nowrap;
+    transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
 }
 
 .ver-todas:hover {
-    background-color: #444;
+    background-color: #e50914;
+    border-color: #e50914;
+    transform: translateX(3px);
 }
 
-.titulo-seccion {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 10px;
+.ver-todas:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 2px;
+}
+
+/* Mensaje de carga de las secciones de la Home */
+main > div > div > h3 {
+    margin: 0;
+    padding: 40px clamp(16px, 4vw, 48px);
+    color: #b3b3b3;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+}
+
+/* ===================== Tablets ===================== */
+@media (max-width: 900px) {
+    .Section-data {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 16px;
+        margin-bottom: 36px;
+    }
+}
+
+/* ===================== Celulares ===================== */
+@media (max-width: 560px) {
+    .Section-data {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        margin-bottom: 28px;
+        padding: 0 14px;
+    }
+
+    .titulo-seccion {
+        gap: 8px;
+    }
+
+    .titulo-seccion h2 {
+        padding-left: 9px;
+        border-left-width: 3px;
+    }
+
+    .ver-todas {
+        padding: 7px 12px;
+        font-size: 0.75rem;
+    }
 }

@@ -1,3 +1,4 @@
+import "./Home.css";
 import React, { Component } from "react";
 import MovieSec from "../../Components/MovieSection/MovieSection";
 import Buscador from "../../Components/Buscador/Buscador";

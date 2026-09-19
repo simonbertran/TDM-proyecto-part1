@@ -38,7 +38,7 @@ class MovieSec extends Component {
                             <Link className="ver-todas" to="/peliculas/popular">Ver todas</Link>
                         </div>
 
-                        {this.state.datosPopu.filter((Peli,idx)=>idx<4).map((Peli) =>
+                        {this.state.datosPopu.filter((Peli,idx)=>idx<7).map((Peli) =>
                             <MovieCard key={Peli.id} Peli={Peli} />)}
                     </section>
                 }
@@ -52,7 +52,7 @@ class MovieSec extends Component {
                             <Link className="ver-todas" to="/peliculas/now_playing">Ver todas</Link>
                         </div>
 
-                        {this.state.datosPlay.filter((Peli,idx)=>idx<4).map((Peli) =>
+                        {this.state.datosPlay.filter((Peli,idx)=>idx<7).map((Peli) =>
                             <MovieCard key={Peli.id} Peli={Peli} />)}
                     </section>
                 }

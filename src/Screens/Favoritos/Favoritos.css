@@ -1,0 +1,38 @@
+/* ===========================================================
+   Favoritos.css
+   Título de la pantalla de favoritos.
+   (SearchResults usa el mismo marcado: <div> > <h2>, por eso
+   este título también le aplica a esa pantalla.)
+   =========================================================== */
+
+main > div > h2 {
+    margin: 4px 0 22px;
+    padding: 0 clamp(16px, 4vw, 48px);
+    color: #ffffff;
+    font-size: clamp(1.35rem, 1.05rem + 1.2vw, 2.1rem);
+    font-weight: 800;
+    letter-spacing: -0.01em;
+}
+
+main > div > h2::after {
+    content: "";
+    display: block;
+    width: 64px;
+    height: 4px;
+    margin-top: 10px;
+    border-radius: 2px;
+    background-color: #e50914;
+}
+
+@media (max-width: 600px) {
+    main > div > h2 {
+        margin-bottom: 16px;
+        padding: 0 14px;
+    }
+
+    main > div > h2::after {
+        width: 48px;
+        height: 3px;
+        margin-top: 8px;
+    }
+}

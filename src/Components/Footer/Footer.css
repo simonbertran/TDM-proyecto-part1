@@ -1,28 +1,41 @@
-footer{
-    flex-direction: row;
+/* ===========================================================
+   Footer.css
+   Pie de página con los integrantes del grupo.
+   =========================================================== */
+
+footer {
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
-    width: 100%;
+    align-items: center;
     justify-content: center;
-    background-color: #eee;
-    border-radius: 4px;
-    margin-bottom: 20px;
-    margin: 0 ;
-}
-
-
-
- footer p{
-    margin-right: 6px;
-    
-}
-
-.nav-tabs{
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content:space-around;
+    gap: 4px 8px;
     width: 100%;
+    margin: 60px 0 0 0;
+    padding: 30px 16px 34px;
+    border-radius: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    background-color: #0b0b0b;
+    color: #808080;
+    font-size: 0.85rem;
+    letter-spacing: 0.02em;
+    text-align: center;
 }
 
+footer p {
+    margin: 0;
+    margin-right: 6px;
+    transition: color 0.2s ease;
+}
 
+footer p:hover {
+    color: #e5e5e5;
+}
+
+@media (max-width: 600px) {
+    footer {
+        margin-top: 40px;
+        padding: 22px 12px 26px;
+        font-size: 0.78rem;
+    }
+}

@@ -1,0 +1,39 @@
+/* ===========================================================
+   SearchResults.css
+   Resultados de búsqueda: estado de carga.
+   (El mismo <h3> de "Cargando..." lo usan Detalle, Peliculas y
+   Favoritos, así que el estilo sirve para todas esas pantallas.)
+   =========================================================== */
+
+main > div > h3 {
+    margin: 0;
+    padding: 50px clamp(16px, 4vw, 48px);
+    color: #b3b3b3;
+    font-size: 1.05rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    animation: cargando-parpadeo 1.4s ease-in-out infinite;
+}
+
+@keyframes cargando-parpadeo {
+    0%, 100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.45;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    main > div > h3 {
+        animation: none;
+    }
+}
+
+@media (max-width: 600px) {
+    main > div > h3 {
+        padding: 34px 14px;
+        font-size: 0.95rem;
+    }
+}

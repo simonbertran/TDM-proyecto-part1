@@ -1,7 +1,6 @@
-body{
-height: 1009px;
-width: 100%;
-}
+/* El alto fijo del body se saco: los estilos base estan en
+   src/Components/Header/Header.css (un css por componente). */
+
 .search-form, .filter-form {
     padding: .5rem 0;
     margin-bottom: 20px;

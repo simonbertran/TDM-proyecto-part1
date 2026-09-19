@@ -1,3 +1,4 @@
+import "./Boton.css";
 import React, { Component } from "react";
 import Cookies from "universal-cookie";
 

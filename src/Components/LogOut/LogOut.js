@@ -1,3 +1,4 @@
+import "./LogOut.css";
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import Cookies from 'universal-cookie';

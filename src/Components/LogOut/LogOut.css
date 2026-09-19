@@ -1,0 +1,41 @@
+/* ===========================================================
+   LogOut.css
+   Botón de cerrar sesión (se renderiza dentro del nav del Header).
+   =========================================================== */
+
+.nav-tabs button {
+    margin-left: 6px;
+    padding: 8px 16px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+    background-color: transparent;
+    color: #e5e5e5;
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: 600;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.nav-tabs button:hover {
+    background-color: #e50914;
+    border-color: #e50914;
+    color: #ffffff;
+}
+
+.nav-tabs button:active {
+    transform: scale(0.97);
+}
+
+.nav-tabs button:focus-visible {
+    outline: 2px solid #e50914;
+    outline-offset: 2px;
+}
+
+@media (max-width: 600px) {
+    .nav-tabs button {
+        padding: 7px 12px;
+        font-size: 0.82rem;
+    }
+}

@@ -1,30 +1,117 @@
+/* ===========================================================
+   Detalle.css
+   Ficha de la película.
+   =========================================================== */
+
 .detalle {
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
-    gap: 30px;
-    padding: 30px;
-    margin-top: 1%;
-    background-color: rgb(226, 221, 213);
+    gap: clamp(20px, 3vw, 38px);
+    width: calc(100% - 2 * clamp(16px, 4vw, 48px));
+    max-width: 1100px;
+    margin: 10px auto 60px;
+    padding: clamp(20px, 3vw, 40px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    background-color: #181818;
+    background-image: linear-gradient(135deg, rgba(229, 9, 20, 0.18) 0%, rgba(20, 20, 20, 0) 55%);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
 }
 
 .detalle img {
     width: 300px;
-    border-radius: 4px;
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
 }
 
 .detalle-info {
-    flex: 1;
+    flex: 1 1 320px;
     min-width: 250px;
-    background-color: white;
-    color: #0e0e0e;
-    padding: 20px;
-    border-radius: 4px;
+    padding: 0;
+    border-radius: 0;
+    background-color: transparent;
+    color: #ffffff;
 }
 
+.detalle-info h2 {
+    margin: 0 0 18px;
+    color: #ffffff;
+    font-size: clamp(1.6rem, 1.2rem + 1.6vw, 2.6rem);
+    font-weight: 900;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+}
+
+.detalle-info p {
+    margin: 0 0 10px;
+    color: #d2d2d2;
+    font-size: 0.97rem;
+    line-height: 1.65;
+}
+
+/* Géneros como chips */
 .generos {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin-top: 16px;
 }
+
 .generos p {
-    margin-right: 6px;
+    margin: 0;
+    margin-right: 0;
+    padding: 5px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 999px;
+    background-color: rgba(255, 255, 255, 0.08);
+    color: #e5e5e5;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.generos p:hover {
+    background-color: #e50914;
+    color: #ffffff;
+}
+
+/* ===================== Tablets ===================== */
+@media (max-width: 900px) {
+    .detalle {
+        margin-bottom: 44px;
+    }
+
+    .detalle img {
+        width: 240px;
+        margin: 0 auto;
+    }
+}
+
+/* ===================== Celulares ===================== */
+@media (max-width: 600px) {
+    .detalle {
+        width: calc(100% - 28px);
+        gap: 18px;
+        margin: 4px auto 36px;
+        padding: 18px;
+        border-radius: 8px;
+    }
+
+    .detalle img {
+        width: 190px;
+    }
+
+    .detalle-info {
+        flex: 1 1 100%;
+        min-width: 0;
+    }
+
+    .detalle-info p {
+        font-size: 0.9rem;
+    }
 }

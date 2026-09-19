@@ -1,0 +1,92 @@
+/* ===========================================================
+   Buscador.css
+   Formulario de búsqueda de la Home.
+   El <form> no tiene clase, así que se lo identifica por su
+   input con placeholder y su boton de submit.
+   =========================================================== */
+
+main > div > form:has(input[placeholder]) {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 100%;
+    max-width: 760px;
+    margin: 0 auto 36px;
+    padding: 0 clamp(16px, 4vw, 48px);
+}
+
+main > div > form input[type="text"][placeholder] {
+    flex: 1 1 220px;
+    min-width: 0;
+    padding: 13px 18px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+main > div > form input[type="text"][placeholder]::placeholder {
+    color: #8c8c8c;
+}
+
+main > div > form input[type="text"][placeholder]:hover {
+    border-color: rgba(255, 255, 255, 0.45);
+}
+
+main > div > form input[type="text"][placeholder]:focus {
+    outline: none;
+    background-color: rgba(0, 0, 0, 0.85);
+    border-color: #e50914;
+    box-shadow: 0 0 0 3px rgba(229, 9, 20, 0.25);
+}
+
+main > div > form button[type="submit"] {
+    flex: 0 0 auto;
+    padding: 13px 28px;
+    border: none;
+    border-radius: 4px;
+    background-color: #e50914;
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+main > div > form button[type="submit"]:hover {
+    background-color: #f6121d;
+    box-shadow: 0 6px 18px rgba(229, 9, 20, 0.4);
+}
+
+main > div > form button[type="submit"]:active {
+    transform: scale(0.97);
+}
+
+main > div > form button[type="submit"]:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 2px;
+}
+
+@media (max-width: 600px) {
+    main > div > form:has(input[placeholder]) {
+        margin-bottom: 26px;
+        padding: 0 16px;
+    }
+
+    main > div > form input[type="text"][placeholder] {
+        flex: 1 1 100%;
+        padding: 12px 15px;
+        font-size: 0.95rem;
+    }
+
+    main > div > form button[type="submit"] {
+        flex: 1 1 100%;
+        padding: 12px 20px;
+    }
+}

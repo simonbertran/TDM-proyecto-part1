@@ -1,45 +1,122 @@
+/* ===========================================================
+   MovieCard.css
+   Tarjeta de película + los botones ".more" que nacen en esta
+   tarjeta (Favoritos y Detalle reutilizan la misma clase).
+   =========================================================== */
+
 .character-card {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 21%;
-    color: #0e0e0e;
-    background-color: white;
-    padding: 1%;
-    margin: 0.4%;
-    
-}
-
-.character-card h4{
-    font-size: 150%;  
-    margin-bottom: 4%;
-    margin-top: 1%;  
-}
-
-.character-card img{
+    justify-content: flex-start;
+    align-items: stretch;
     width: 100%;
+    margin: 0;
+    padding: 0 0 14px 0;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 6px;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    overflow: hidden;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
-.active{
-    background-color: aquamarine;
+.character-card:hover {
+    transform: translateY(-6px) scale(1.02);
+    border-color: rgba(255, 255, 255, 0.18);
+    box-shadow: 0 18px 34px rgba(0, 0, 0, 0.7);
 }
 
+.character-card img {
+    width: 100%;
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+    background-color: #000000;
+    transition: filter 0.25s ease;
+}
 
+.character-card:hover img {
+    filter: brightness(1.08);
+}
 
+.character-card h4 {
+    margin: 12px 12px 8px;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.3;
+    color: #ffffff;
+}
+
+.character-card p {
+    margin: 0 12px 8px;
+    color: #b3b3b3;
+    font-size: 0.84rem;
+    line-height: 1.5;
+}
+
+/* Tarjeta seleccionada (doble click) */
+.active {
+    border-color: #e50914;
+    background-color: #201415;
+    box-shadow: 0 0 0 2px rgba(229, 9, 20, 0.55), 0 18px 34px rgba(0, 0, 0, 0.7);
+}
+
+/* ---------- Botones y links de la tarjeta ---------- */
 .more {
-    display: inline-block;
-    background-color: #0e0e0e;
-    color: white;
+    display: block;
+    margin: 6px 12px 0;
+    padding: 9px 12px;
     border: none;
     border-radius: 4px;
-    padding: 6px 10px;
-    margin: 6px 4px;
-    font-size: 0.9rem;
-    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.14);
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 0.88rem;
+    font-weight: 600;
+    text-align: center;
     text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
 }
 
 .more:hover {
-    background-color: #444;
+    background-color: rgba(255, 255, 255, 0.26);
+    color: #ffffff;
+}
+
+/* El link "Ir al detalle" es la acción principal */
+a.more {
+    background-color: #e50914;
+    margin-top: 2px;
+}
+
+a.more:hover {
+    background-color: #f6121d;
+    box-shadow: 0 6px 16px rgba(229, 9, 20, 0.35);
+}
+
+.more:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 2px;
+}
+
+@media (max-width: 600px) {
+    .character-card h4 {
+        margin: 10px 10px 6px;
+        font-size: 0.9rem;
+    }
+
+    .character-card p {
+        margin: 0 10px 6px;
+        font-size: 0.78rem;
+    }
+
+    .more {
+        margin: 5px 10px 0;
+        padding: 8px 10px;
+        font-size: 0.8rem;
+    }
+
+    .character-card:hover {
+        transform: none;
+    }
 }

@@ -1,8 +1,44 @@
-.nav a{
-    color: #444;
-    text-decoration: none;
+/* ===========================================================
+   Pestanas.css
+   Cada link de navegación del Header.
+   =========================================================== */
+
+.nav li {
+    list-style: none;
 }
 
-.nav a:hover{
-    font-weight: bold;
+.nav a {
+    display: inline-block;
+    padding: 8px 14px;
+    border-radius: 4px;
+    color: #e5e5e5;
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.nav a:hover {
+    color: #ffffff;
+    font-weight: 500;
+    background-color: rgba(255, 255, 255, 0.14);
+}
+
+.nav a:active {
+    background-color: rgba(229, 9, 20, 0.85);
+    color: #ffffff;
+}
+
+.nav a:focus-visible {
+    outline: 2px solid #e50914;
+    outline-offset: 2px;
+}
+
+@media (max-width: 600px) {
+    .nav a {
+        padding: 7px 10px;
+        font-size: 0.85rem;
+    }
 }

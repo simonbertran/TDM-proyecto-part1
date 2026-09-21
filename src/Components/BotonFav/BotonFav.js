@@ -13,7 +13,8 @@ class BotonFav extends Component {
     }
 
     componentDidMount() {
-        let storageString = localStorage.getItem('favoritosPeliculas')
+        let clave = this.props.tipo === "tv" ? "favoritosSeries" : "favoritosPeliculas"
+        let storageString = localStorage.getItem(clave)
         let storage = JSON.parse(storageString)
         if (storage !== null) {
             let existe = storage.includes(this.props.id)
@@ -22,29 +23,31 @@ class BotonFav extends Component {
     }
 
     agregarFav() {
-        let id = this.props.id
-        let existeFav = localStorage.getItem('favoritosPeliculas')
-        if (existeFav == null) {
-            let favoritos = [id]
-            let storageString = JSON.stringify(favoritos)
-            localStorage.setItem('favoritosPeliculas', storageString)
-        } else {
-            let storageString = localStorage.getItem('favoritosPeliculas')
-            let favsRecuperados = JSON.parse(storageString)
-            favsRecuperados.push(id)
-            let favsString = JSON.stringify(favsRecuperados)
-            localStorage.setItem('favoritosPeliculas', favsString)
-        }
-        this.setState({ fav: true })
+    let id = this.props.id
+    let clave = this.props.tipo === "tv" ? "favoritosSeries" : "favoritosPeliculas"
+    let existeFav = localStorage.getItem(clave)
+    if (existeFav == null) {
+        let favoritos = [id]
+        let storageString = JSON.stringify(favoritos)
+        localStorage.setItem(clave, storageString)
+    } else {
+        let storageString = localStorage.getItem(clave)
+        let favsRecuperados = JSON.parse(storageString)
+        favsRecuperados.push(id)
+        let favsString = JSON.stringify(favsRecuperados)
+        localStorage.setItem(clave, favsString)
     }
+    this.setState({ fav: true })
+}
 
     sacarFav() {
         let id = this.props.id
-        let storageRecuperado = localStorage.getItem('favoritosPeliculas')
+        let clave = this.props.tipo === "tv" ? "favoritosSeries" : "favoritosPeliculas"
+        let storageRecuperado = localStorage.getItem(clave)
         let storage = JSON.parse(storageRecuperado)
         let storageFiltrado = storage.filter((idPelicula) => idPelicula !== id)
         let storageString = JSON.stringify(storageFiltrado)
-        localStorage.setItem('favoritosPeliculas', storageString)
+        localStorage.setItem(clave, storageString)
         this.setState({ fav: false })
     }
 

@@ -32,13 +32,16 @@ class MovieCard extends Component {
 
     render() {
         const posterUrl = `https://image.tmdb.org/t/p/w500${this.props.Peli.poster_path}`;
+        const titulo = this.props.tipo === "tv" ? this.props.Peli.name : this.props.Peli.title;
+        const fecha = this.props.tipo === "tv" ? this.props.Peli.first_air_date : this.props.Peli.release_date;
+        const tipo = this.props.tipo === "tv" ? "tv" : "movie";
         return (
             <article className={this.state.estaSelect ? "character-card active" : "character-card"} onDoubleClick={() => this.select()}>
-                <img src={posterUrl} alt={this.props.Peli.title} />
-                <h4>{this.props.Peli.title}</h4>
-                <Link className="more" to={`/detalle/${this.props.Peli.id}`}>Ir al detalle</Link>
+                <img src={posterUrl} alt={titulo} />
+                <h4>{titulo}</h4>
+                <Link className="more" to={`/detalle/${tipo}/${this.props.Peli.id}`}>Ir al detalle</Link>
 
-                <BotonFav id={this.props.Peli.id} />
+                <BotonFav id={this.props.Peli.id} tipo={tipo} />
 
                 {this.state.estaOculto?
                     <>
@@ -46,7 +49,7 @@ class MovieCard extends Component {
                     </>
                     :
                     <>
-                        <p>Fecha de estreno: {this.props.Peli.release_date}</p>
+                        <p>Fecha de estreno: {fecha}</p>
                         <p>Sinopsis: {this.props.Peli.overview}</p>                        
                         <button className='more' onClick={() => this.verMenos()}> Ocultar Descripcion</button>
                         

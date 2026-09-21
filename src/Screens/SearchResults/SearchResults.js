@@ -8,19 +8,23 @@ class SearchResults extends Component {
     super(props);
     this.state = {
       datosSearch: [],
-      cargando: true
+      cargando: true,
+      tipo: ''
     };
   }
 
   componentDidMount() {
     const nombreBusqueda = this.props.match.params.name;
-    fetch(`https://api.themoviedb.org/3/search/movie?api_key=a86dfc3e8792d8c35b2b0bcfae9f4488&query=${nombreBusqueda}`)
+    fetch(`https://api.themoviedb.org/3/search/multi?api_key=a86dfc3e8792d8c35b2b0bcfae9f4488&include_adult=false&language=en-US&query=${nombreBusqueda}`)
             .then(response => response.json())
-            .then(data => this.setState({ datosSearch: data.results || [], cargando:false }))
+            .then(data => {
+              let resultados = data.results || []
+              this.setState({ datosSearch: resultados.filter((item) => item.media_type !== "person"), cargando: false, tipo: '' })
+            })            
             .catch(error => console.log(error))
   }
 
-  
+
 render() {
     return (
       <div>
@@ -31,7 +35,7 @@ render() {
         (
           <section className="Section-data">
             {this.state.datosSearch.map((Peli) => (
-              <MovieCard key={Peli.id} Peli={Peli} />
+            <MovieCard key={Peli.id} Peli={Peli} tipo={Peli.media_type} />
             ))}
           </section>
         )}

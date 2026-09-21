@@ -8,6 +8,7 @@ import Favoritos from "./Screens/Favoritos/Favoritos";
 import Register from "./Screens/Register/Register";
 import SearchResults from "./Screens/SearchResults/SearchResults";
 import NotFound from "./Screens/NotFound/NotFound";
+import Series from "./Screens/Series/Series";
 import { Route } from "react-router-dom";
 import { Switch } from "react-router-dom";
  
@@ -18,8 +19,9 @@ function App() {
       <main>
         <Switch>
           <Route path="/" exact={true} component={Home} />
-          <Route path="/detalle/:id" component={Detalle} />
+          <Route path="/detalle/:tipo/:id" component={Detalle} />
           <Route path="/peliculas/:tipo" component={Peliculas} />
+          <Route path="/series" component={Series} />
           <Route path="/login" component={Login} />
           <Route path="/registro" component={Register} /> 
           <Route path="/favoritos" component={Favoritos} />

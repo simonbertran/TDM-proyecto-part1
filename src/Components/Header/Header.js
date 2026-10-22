@@ -14,15 +14,10 @@ let pestana = [
     { tit: "Favoritos", ruta: "/favoritos" },
     { tit: "Registro", ruta: "/registro" },
     { tit: "Log in", ruta: "/login" },
-
-
 ];
 
-class Header extends Component {
-
-    render() {
-
-        let haySesion = cookies.get("user-auth-cookie");
+function Header(props){
+const haySesion = cookies.get("user-auth-cookie") !== undefined;
 
         let pestanasVisibles = pestana.filter((item) => {
 
@@ -63,6 +58,5 @@ class Header extends Component {
             </header>
         );
     }
-}
 
 export default Header;

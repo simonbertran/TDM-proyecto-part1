@@ -1,30 +1,22 @@
 import "./Filtro.css";
-import React, { Component } from "react";
+import {useState } from "react";
+import React from "react";
 
-class Filtro extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            valorFiltro: ''
-        }
-    }
+function Filtro(props) {
+    const [valorFiltro, setValorFiltro] = useState("")
 
-    evitarSubmit(event) {
+    function evitarSubmit(event) {
         event.preventDefault()
     }
-
-    controlarCambios(event) {
-        this.setState({ valorFiltro: event.target.value }, () => this.props.filtrar(this.state.valorFiltro));
+    function controlarCambios(event){
+        setValorFiltro(event.target.value); 
     }
-
-    render() {
         return (
-            <form onSubmit={(event) => this.evitarSubmit(event)}>
+            <form onSubmit={(event) => evitarSubmit(event)}>
                 <label>Filtrar por título:</label>
-                <input type="text" onChange={(event) => this.controlarCambios(event)} value={this.state.valorFiltro} />
+                <input type="text" onChange={(event) => controlarCambios(event)} value={valorFiltro} />
             </form>
         )
     }
-}
 
 export default Filtro

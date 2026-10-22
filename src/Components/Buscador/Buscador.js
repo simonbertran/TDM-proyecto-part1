@@ -1,41 +1,32 @@
 import "./Buscador.css"
-import React, { Component } from 'react';
+import { useEffect,useState } from "react";
 import { withRouter } from 'react-router-dom';
 
-class Buscador extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      busqueda: '',
-    };
+function Buscador(props){
+  const [busqueda,setBusqueda] = useState("")
+
+  function controlarCambios(event){
+    setBusqueda(event.target.value)
   }
 
-  controlarCambios(event) {
-    this.setState({
-      busqueda: event.target.value
-    });
-  }
-
-  evitarSubmit(event) {
-    event.preventDefault();
-    if (this.state.busqueda !== '') {
-      this.props.history.push('/searchresults/movie/' + this.state.busqueda);
+  function evitarSubmit(event){
+     event.preventDefault();
+     if (busqueda !== '') {
+      props.history.push('/searchresults/movie/' + busqueda);
     }
   }
-
-  render() {
+  
     return (
-      <form onSubmit={(event) => this.evitarSubmit(event)}>
+      <form onSubmit={(event) => evitarSubmit(event)}>
         <input
           type="text"
           placeholder="Buscar pelicula/serie..."
-          onChange={(event) => this.controlarCambios(event)}
-          value={this.state.busqueda}
+          onChange={(event) => controlarCambios(event)}
+          value={busqueda}
         />
         <button type="submit">Buscar</button>
       </form>
     );
   }
-}
 
 export default withRouter(Buscador);

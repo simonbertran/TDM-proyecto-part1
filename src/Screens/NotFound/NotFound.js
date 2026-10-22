@@ -7,7 +7,7 @@ class NotFound extends Component {
         return (
             <div className="not-found-title">
                 <Header />
-                <h1 className="not-found-title"> Error 404: La Pagina no existe</h1>
+                <h1 className="not-found-title"> Error: La Pagina no existe</h1>
             </div>
         );
     }
